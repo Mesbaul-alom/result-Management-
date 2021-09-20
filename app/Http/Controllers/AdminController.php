@@ -147,12 +147,15 @@ class AdminController extends Controller
              $oparetor->dob=$request->dob;
              $oparetor->password=$request->password;
              $oparetor->role="2";
-              $oparetor->is_active="1";
+              $oparetor->is_active=$request->is_active;
               $newImageName=time().'-'.$request->name.'.'.$request->image->extension();
               $image=$request->image->move(public_path('profile_img'),$newImageName);
                $oparetor->image=$newImageName;
       $oparetor->save();
       
+
+      User::where('oparetor_id', $id)
+      ->update(['is_active' => $request->is_active]);
         
       return view('admin.oparetor_edit',['success'=>true])->with('oparetor',$oparetor);
     }
@@ -249,11 +252,15 @@ public function teacher_update(TeacherRequest $request,$id)
              $teacher->dob=$request->dob;
              $teacher->password=$request->password;
              $teacher->role="3";
-              $teacher->is_active="1";
+              $teacher->is_active=$request->is_active;;
               $newImageName=time().'-'.$request->name.'.'.$request->image->extension();
               $image=$request->image->move(public_path('profile_img'),$newImageName);
                $teacher->image=$newImageName;
               $teacher->save();
+
+              User::where('teacher_id', $id)
+              ->update(['is_active' => $request->is_active]);
+
               return view('admin.teacher_edit',['success'=>true])->with('teacher',$teacher);
     }
     //-----------teacher update end ----------// 
@@ -372,11 +379,15 @@ public function teacher_update(TeacherRequest $request,$id)
                    $student->password=$request->password;
                    $student->image="";
                    $student->role="4";
-                    $student->is_active="1";
+                    $student->is_active=$request->is_active;
                     $newImageName=time().'-'.$request->name.'.'.$request->image->extension();
                     $image=$request->image->move(public_path('profile_img'),$newImageName);
                      $student->image=$newImageName;
                         $student->save();
+
+
+                        User::where('student_id', $id)
+      ->update(['is_active' => $request->is_active]);
                         return view('admin.student_edit',['success'=>true])->with('student',$student);
     }
 
@@ -567,12 +578,15 @@ else{
       
         $students=Student::all();
         $courses=Courses::all();
+        // $sections=Section::all();
+        // dd($section);
         $subject=Subject::with(['student','teacher'])->where('id',$id)->first();
         // foreach ($courses->pluck('teacher_id') as $teacher) {
         //   $teacher_ids[]=$teacher;
         // }
         // $teachers=Teacher::whereIn('id',$teacher_ids)->get();
         return view('admin.secStudentList') ->with('subject',$subject);
+                                            // ->with('sections',$sections);
                                             // ->with('teachers',$teachers)
                                            
     }
@@ -626,11 +640,20 @@ return "fail";
     } //
 //delete funtion start
      public function Sectiondestroy($id){
-        Subject::destroy($id);
+      //  $C=Courses::destroy($id);
+       $deletedRows =Courses::where('subject_id', $id)->delete();
         return redirect('/Admin/sectionlist');
         //return redirect()->route('admin.index');
     }
  //delete funtion end
+ public function Sec_Studentdestroy($id){
+  // dd($id);
+   $secstudent=Section::where('student_id', $id)->delete();
+  
+    return redirect('/Admin/sectionlist');
+    //return redirect()->route('admin.index');
+}
+ 
     //--------------------------------------section end---------------------------------------------------------------------//
      public function create_result()
     {
@@ -674,18 +697,21 @@ return "fail";
         $id = session('id');
         $user = User::find($id);
         $user->username = $req->username;
-        $user->first_name =$req->first_name;
-        $user->last_name =$req->last_name;
+        // $user->first_name =$req->first_name;
+        // $user->last_name =$req->last_name;
         $user->email = $req->email;
-        $user->role = "1";
+        $user->phone = $req->phone;
         $user->password =$req->password;
-        $user->is_active="1";
-       
-        $newImageName=time().'-'.$req->name.'.'.$req->image->extension();
-       $image=$req->image->move(public_path('profile_img'),$newImageName);
-        $user->image=$newImageName;
+
         $user->save();
-        return redirect('/Admin/profile');//->route('/Admin/profile');
+      //   $user->is_active="1";
+       
+      //   $newImageName=time().'-'.$req->name.'.'.$req->image->extension();
+      //  $image=$req->image->move(public_path('profile_img'),$newImageName);
+      //   $user->image=$newImageName;
+      $user=User::where('id',$id)->first();
+       
+      return view('admin.admin_profile')->with ('user',$user);
     }
    
 

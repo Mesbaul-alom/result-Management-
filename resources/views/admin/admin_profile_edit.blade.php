@@ -33,31 +33,10 @@
                                             <div class="row">
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
-                                                        <label for="first_name">First Name</label>
-                                                        <input id="first_name" name="first_name" type="text" value="{{$admin->first_name}}" class="form-control">
+                                                        <label for="username">User Name</label>
+                                                        <input id="first_name" name="username" type="text" value="{{$admin->username}}" class="form-control">
                                                         @if($errors->has('first_name'))
                                                        <div style="color:red"> {{$errors->first('first_name')}}</div>
-                                                       @endif
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="last_name">Last Name</label>
-                                                        <input id="last_name" name="last_name" type="text" value="{{$admin->last_name}}" class="form-control">
-                                                        @if($errors->has('last_name'))
-                                                       <div style="color:red"> {{$errors->first('last_name')}}</div>
-                                                       @endif
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="father_name">Father Name</label>
-                                                        <input id="father_name" name="father_name" type="text" value="{{$admin->father_name}}" class="form-control">
-                                                        @if($errors->has('father_name'))
-                                                       <div style="color:red"> {{$errors->first('father_name')}}</div>
-                                                       @endif
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label for="mother_name">Mother Name</label>
-                                                        <input id="mother_name" name="mother_name" type="text" value="{{$admin->mother_name}}" class="form-control">
-                                                        @if($errors->has('mother_name'))
-                                                       <div style="color:red"> {{$errors->first('mother_name')}}</div>
                                                        @endif
                                                     </div>
                                                      <div class="form-group">
@@ -83,62 +62,7 @@
                                                     </div>
                                                 </div>
         
-                                                <div class="col-sm-6">
-                                                    <div class="form-group">
-                                                        <label class="control-label">Gender</label>
-                                                        <select name="gender" value="{{$admin->gender}}" class="form-control select2">
-                                                            <option>Select</option>
-                                                            <option>Male</option>
-                                                            <option >Female</option>
-                                                        </select>
-                                                    </div>
-                                                    @if($errors->has('gender'))
-                                                       <div style="color:red"> {{$errors->first('gender')}}</div>
-                                                       @endif
-                                                    <div class="form-group">
-                                                <label>Date of birth</label>
-                                                <div class="input-group">
-                                                    <input value="{{$admin->dob}}"name="dob"  type="date" class="form-control" >
-
-                                                </div><!-- input-group -->
-                                                @if($errors->has('dob'))
-                                                       <div style="color:red"> {{$errors->first('dob')}}</div>
-                                                       @endif
-                                            </div>
-                                            <div class="form-group">
-                                                        <label for="nid">NID</label>
-                                                        <input id="nid" name="nid" type="text" value="{{$admin->nid}}" class="form-control">
-                                                        @if($errors->has('nid'))
-                                                       <div style="color:red"> {{$errors->first('nid')}}</div>
-                                                       @endif
-                                                    </div>
-                                                     <div class="form-group">
-                                                        <label for="department">Department</label>
-                                                        <input id="department" name="department" type="text" value="{{$admin->department}}" class="form-control">
-                                                        @if($errors->has('department'))
-                                                       <div style="color:red"> {{$errors->first('department')}}</div>
-                                                       @endif
-                                                    </div>
-                                                     <div class="form-group">
-                                                        <label for="present_adress">Present Adress</label>
-                                                        <input id="present_adress" name="present_address" type="text" value="{{$admin->present_address}}" class="form-control">
-                                                        @if($errors->has('present_address'))
-                                                       <div style="color:red"> {{$errors->first('present_address')}}</div>
-                                                       @endif
-                                                    </div>
-                                                     <div class="form-group">
-                                                        <label for="parmanent_address">Parmanent Address</label>
-                                                        <input id="parmanent_address" name="permanent_address" type="text" value="{{$admin->permanent_address}}" class="form-control">
-                                                        @if($errors->has('permanent_address'))
-                                                       <div style="color:red"> {{$errors->first('permanent_address')}}</div>
-                                                       @endif
-                                                    </div>
-                                                     <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="card-title mb-3">admin Images</h4>
-                                            <div class="fallback">
-                                                <input name="image" type="file" value="{{$admin->image}}" multiple="">
-                                            </div>
+                                              
                                     </div>
 
                                 </div> 

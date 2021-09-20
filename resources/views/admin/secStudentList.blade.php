@@ -110,8 +110,8 @@
                                                 
                                                         <td>{{$student->pivot->marks}}</td>
 
-                                                <td>
-                                                            <a href="/student/delete/{{$student->id}}" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Delete"><i class="bx bx-trash"></i></a>
+                                                       <td>
+                                                            <a href="/sec_student/delete/{{$student->id}}" class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="Delete"><i class="bx bx-trash"></i></a>
                                                         
                                                             <a href="/student/profile/{{$student->id}}" class="btn btn-primary" data-toggle="tooltip" data-placement="top" title="Profile"><i class="bx bx-user-circle"></i></a>
                                                         </td>

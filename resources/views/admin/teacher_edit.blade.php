@@ -81,6 +81,16 @@
                                                        <div style="color:red"> {{$errors->first('password')}}</div>
                                                        @endif
                                                     </div>
+
+                                                    <div class="form-group">
+                                                        <label class="control-label">Status</label>
+                                                        <select name="is_active"  class="form-control select2">
+                                                            <option value="{{$teacher->is_active}}" >Select</option>
+                                                            <option value="1">Active</option>
+                                                            <option value="0">Disactive</option>
+                                                        </select>
+                                                    </div>
+                                                    
                                                 </div>
         
                                                 <div class="col-sm-6">
@@ -95,10 +105,12 @@
                                                     @if($errors->has('gender'))
                                                        <div style="color:red"> {{$errors->first('gender')}}</div>
                                                        @endif
+
+
                                                     <div class="form-group">
                                                 <label>Date of birth</label>
                                                 <div class="input-group">
-                                                    <input value="{{$teacher->dob}}"name="dob"  type="date" class="form-control" >
+                                                    <input value="{{$teacher->dob}}" name="dob"  type="date" class="form-control" >
 
                                                 </div><!-- input-group -->
                                                 @if($errors->has('dob'))
@@ -134,6 +146,7 @@
                                                        @endif
                                                     </div>
                                                      <div class="card">
+                                                         
                                     <div class="card-body">
                                         <h4 class="card-title mb-3">Teacher Images</h4>
                                             <div class="fallback">
@@ -143,6 +156,7 @@
 
                                 </div> 
                                 <!-- end card-->
+                                
                                                 </div>
                                             </div>
         

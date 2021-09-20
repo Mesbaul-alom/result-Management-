@@ -88,6 +88,15 @@
                                                        <div style="color:red"> {{$errors->first('board')}}</div>
                                                        @endif
                                                     </div>
+
+                                                    <div class="form-group">
+                                                        <label class="control-label">Status</label>
+                                                        <select name="is_active"  class="form-control select2">
+                                                            <option value="{{$student->is_active}}">Select</option>
+                                                            <option value="1">Active</option>
+                                                            <option value="0">Disactive</option>
+                                                        </select>
+                                                    </div>
                                                     
                                                 </div>
         

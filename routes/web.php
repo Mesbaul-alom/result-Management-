@@ -36,7 +36,7 @@ Route::resource('/admin', 'AdminController')->only(['index']);
 Route::get('/Admin/dashboard', [AdminController::class,'dashboard'])->name('admin.dashboard');
 Route::get('admin/profile', [AdminController::class,'adminprofile'])->name('admin.profile');
 Route::get('/user/edit/{id}', [AdminController::class,'pro_update'])->name('admin.pro_update');
-Route::post('/admin/profile', [AdminController::class,'profile_update'])->name('admin.update');
+Route::post('/admin/edit/{id}', [AdminController::class,'profile_update'])->name('admin.update');
 	//----------------------admin route end---------------------------------------------//
 
 
@@ -94,7 +94,8 @@ Route::get('/details/section', [AdminController::class,'sectiondetails'])->name(
 Route::get('/section_edit/{id}', [AdminController::class,'section_edit'])->name('admin.section_edit');
 Route::post('/section_edit/{id}', [AdminController::class,'section_update'])->name('admin.section_update');
 Route::get('/section/delete/{id}', [AdminController::class,'Sectiondestroy'])->name('admin.Sectiondestroy');
-
+Route::get('/sec_student/delete/{id}', [AdminController::class,'Sec_Studentdestroy'])->name('admin.Sec_Studentdestroy');
+ 
 Route::get('admin/Studentrecord/{id}',[AdminController::class, 'resultView']);
 
 Route::post('/adminsubmitmarks',[AdminController::class,'SubmitMarks']);

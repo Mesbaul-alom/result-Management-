@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
               $table->string('password');
               $table->string('role');
               $table->string('is_active');
+              $table->string('phone');
               $table->unSignedInteger('teacher_id');
               $table->unSignedInteger('oparetor_id');
               $table->unSignedInteger('student_id');

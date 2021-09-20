@@ -40,7 +40,7 @@
                                         @if($oparetor->is_active =='1')
                                             <a href="#" class="badge badge-primary font-size-11 m-1">Active</a>
                                             @else
-                                            <a href="#" class="badge badge-primary font-size-11 m-1">Suspend</a>
+                                            <a href="#" class="badge badge-danger font-size-11 m-1">Suspend</a>
                                             @endif
                                         </div>
                                     </div>

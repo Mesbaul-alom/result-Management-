@@ -41,9 +41,9 @@
                                     <div class="card-body pt-0">
                                         <div class="row">
                                             <div class="col-sm-4">
-                                                <div class="avatar-md profile-user-wid mb-4">
+                                                {{-- <div class="avatar-md profile-user-wid mb-4">
                                                     <img src="{{asset('assets\images\users\avatar-1.jpg')}}" alt="" class="img-thumbnail rounded-circle">
-                                                </div>
+                                                </div> --}}
                                                 <h5 class="font-size-15 text-truncate">Admin</h5>
                                                 @if($user->is_active =='1')
                                                 <p class="text-muted mb-0 text-truncate">Active</p>
@@ -83,16 +83,9 @@
                                                 <tbody>
                                                     <tr>
                                                         <th scope="row">Full Name:</th>
-                                                        <td>{{$user->first_name}}</td>
+                                                        <td>{{$user->username}}</td>
                                                     </tr>
-                                                    <tr>
-                                                        <th scope="row">Father Name:</th>
-                                                        <td>{{$user->father_name}}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">Mother Name:</th>
-                                                        <td>{{$user->mother_name}}</td>
-                                                    </tr>
+                                                 
                                                     <tr>
                                                         <th scope="row">Mobile :</th>
                                                         <td>{{$user->phone}}</td>
@@ -100,23 +93,6 @@
                                                     <tr>
                                                         <th scope="row">E-mail :</th>
                                                         <td>{{$user->email}}</td>
-                                                    </tr>
-                                                     <tr>
-                                                        <th scope="row">Nid:</th>
-                                                        <td>{{$user->nid}}</td>
-                                                    </tr>
-                                        
-                                                    <tr>
-                                                        <th scope="row">Date of birth:</th>
-                                                        <td>{{$user->dob}}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row"> Present Address :</th>
-                                                        <td>{{$user->present_address}}</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">Parmanent Address :</th>
-                                                        <td>{{$user->permanent_address}}</td>
                                                     </tr>
                                                 </tbody>
                                             </table>
