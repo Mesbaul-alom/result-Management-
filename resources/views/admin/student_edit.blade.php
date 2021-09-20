@@ -163,9 +163,9 @@
                                     <div class="card-body">
                                         <h4 class="card-title mb-3">Student Images</h4>
                                             <div class="fallback">
-                                                <input name="image" type="file">
+                                                <input name="image" type="file" multiple="">
                                             </div>
-                                    </div>
+                                    </div>s
 
                                 </div> 
                                 <!-- end card-->

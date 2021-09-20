@@ -28,7 +28,7 @@
                             <div class="col-12">
                                 <div class="card">
                                     <div class="card-body">
-                                        <form method="post" action="{{url('/create/teacher')}}">
+                                        <form method="post" action="{{url('/create/teacher')}}" enctype="multipart/form-data">
                                             @csrf
                                             <div class="row">
                                                 <div class="col-sm-6">

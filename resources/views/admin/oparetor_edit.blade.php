@@ -148,7 +148,7 @@
                                     <div class="card-body">
                                         <h4 class="card-title mb-3">Oparetor Images</h4>
                                             <div class="fallback">
-                                                <input name="image" type="file" value="{{$oparetor->image}}" multiple="">
+                                                <input name="image" type="file" multiple="">
                                             </div>
                                     </div>
 

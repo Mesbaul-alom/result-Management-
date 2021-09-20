@@ -25,7 +25,7 @@
     <div class="col-xl-8">
         <div class="row">
             <div class="col-sm-4">
-                <div class="card" style="background: linear-gradient(to bottom, #99e799 0%, #ebc1d6 100%); border-radius: 20px">
+                <div class="card" style="background-color:rgb(82, 178, 223); border-radius: 20px">
                     <div class="card-body">
                         <div class="d-flex align-items-center mb-3">
                             <div class="avatar-xs mr-3">
@@ -50,7 +50,7 @@
                 </div>
             </div>
             <div class="col-sm-4">
-                <div class="card" style="background: linear-gradient(to bottom, #d9eba8 0%, #ff99cc 100%); border-radius: 20px">
+                <div class="card" style="background-color:rgb(241, 109, 109); border-radius: 20px">
                     <div class="card-body">
                         <div class="d-flex align-items-center mb-3">
                             <div class="avatar-xs mr-3">
@@ -76,7 +76,7 @@
             </div>
             
             <div class="col-sm-4">
-                <div class="card" style="background: linear-gradient(to bottom, #33ccff 0%, #dac1cd 100%); border-radius: 20px">
+                <div class="card" style="background-color:rgb(231, 157, 60); border-radius: 20px">
                     <div class="card-body">
                         <div class="d-flex align-items-center mb-3">
                             <div class="avatar-xs mr-3">
@@ -107,7 +107,7 @@
 </div>
 <div class="row">
     <div class="col-sm-4">
-        <div class="card" style="background: linear-gradient(to bottom, #d9e8ec 0%, hsl(278, 68%, 75%) 100%); border-radius: 20px">
+        <div class="card" style="background-color:rgb(231, 157, 60); border-radius: 20px">
             <div class="card-body">
                 <div class="d-flex align-items-center mb-3">
                     <div class="avatar-xs mr-3">
@@ -132,7 +132,7 @@
         </div>
     </div>
     <div class="col-sm-4" >
-        <div class="card" style="background: linear-gradient(to bottom, #9290e6 0%, #ff99cc 100%); border-radius: 20px">
+        <div class="card" style="background-color:rgb(241, 109, 109); border-radius: 20px">
             <div class="card-body">
                 <div class="d-flex align-items-center mb-3">
                     <div class="avatar-xs mr-3">

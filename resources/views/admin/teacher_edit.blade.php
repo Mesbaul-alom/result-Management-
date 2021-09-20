@@ -150,7 +150,7 @@
                                     <div class="card-body">
                                         <h4 class="card-title mb-3">Teacher Images</h4>
                                             <div class="fallback">
-                                                <input name="image" type="file" value="{{$teacher->image}}" multiple="">
+                                                <input name="image" type="file" multiple="">
                                             </div>
                                     </div>
 

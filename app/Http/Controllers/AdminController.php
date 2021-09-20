@@ -74,25 +74,29 @@ class AdminController extends Controller
 
          
 
-        Oparetor::insert([
-            'first_name'=>$request->first_name,
-             'last_name'=>$request->last_name,
-              'father_name'=>$request->father_name,
-               'mother_name'=>$request->mother_name,
-                'phone'=>$request->phone,
-                 'email'=>$request->email,
-                  'nid'=>$request->nid,
-                   'gender'=>$request->gender,
-                    'department'=>$request->department,
-                    'present_address'=>$request->present_address,
-                  'permanent_address'=>$request->permanent_address,
-                   'dob'=>$request->dob,
-                   'password'=>$request->password,
-                   'image'=>"",
-                   'role'=>"2",
-                    'is_active'=>"1"
-
-        ]);
+      $oparetor= new Oparetor;
+        $oparetor->first_name=$request->first_name;
+        $oparetor->last_name=$request->last_name;
+        $oparetor->father_name=$request->father_name;
+         $oparetor->mother_name=$request->mother_name;
+          $oparetor->phone=$request->phone;
+           $oparetor->email=$request->email;
+             $oparetor->gender=$request->gender;
+              $oparetor->department=$request->department;
+              $oparetor->present_address=$request->present_address;
+            $oparetor->permanent_address=$request->permanent_address;
+            $oparetor->nid=$request->nid;
+             $oparetor->dob=$request->dob;
+             $oparetor->password=$request->password;
+             $oparetor->role="2";
+              $oparetor->is_active="1";
+              
+                $newImageName=time().'-'.$request->name.'.'.$request->image->extension();
+                $image=$request->image->move(public_path('profile_img'),$newImageName);
+                $oparetor->image=$newImageName;
+           
+      $oparetor->save();
+      
         $oparetor_id=Oparetor::where('first_name',$request->first_name)->pluck('id');
             User::insert([
             'username'=>$request->first_name,
@@ -148,9 +152,14 @@ class AdminController extends Controller
              $oparetor->password=$request->password;
              $oparetor->role="2";
               $oparetor->is_active=$request->is_active;
-              $newImageName=time().'-'.$request->name.'.'.$request->image->extension();
-              $image=$request->image->move(public_path('profile_img'),$newImageName);
-               $oparetor->image=$newImageName;
+              if($request->hasFile('image') && $request->image->isValid()){
+                if(file_exists(public_path('profile_img/'.$oparetor->image))){
+                    unlink(public_path('profile_img/'.$oparetor->image));
+                } 
+                $newImageName=time().'-'.$request->name.'.'.$request->image->extension();
+                $image=$request->image->move(public_path('profile_img'),$newImageName);
+                $oparetor->image=$newImageName;
+            }
       $oparetor->save();
       
 
@@ -177,27 +186,29 @@ class AdminController extends Controller
     }
      public function add_teacher(TeacherRequest $request)
     {
-          Teacher::insert([
+            
+       $teacher= new Teacher;
+       $teacher->first_name=$request->input('first_name');
+       $teacher->last_name=$request->last_name;
+       $teacher->father_name=$request->father_name;
+        $teacher->mother_name=$request->mother_name;
+         $teacher->phone=$request->phone;
+          $teacher->email=$request->email;
+            $teacher->gender=$request->gender;
+             $teacher->department=$request->department;
+             $teacher->present_address=$request->present_address;
+           $teacher->permanent_address=$request->permanent_address;
+           $teacher->nid=$request->nid;
+            $teacher->dob=$request->dob;
+            $teacher->password=$request->password;
+            $teacher->role="3";
+             $teacher->is_active="1";
+                 $newImageName=time().'-'.$request->name.'.'.$request->image->extension();
+                 $image=$request->image->move(public_path('profile_img'),$newImageName);
+                 $teacher->image=$newImageName;
            
-            'first_name'=>$request->first_name,
-             'last_name'=>$request->last_name,
-              'father_name'=>$request->father_name,
-               'mother_name'=>$request->mother_name,
-                'phone'=>$request->phone,
-                 'email'=>$request->email,
-                  'nid'=>$request->nid,
-                   'gender'=>$request->gender,
-                    'department'=>$request->department,
-                    'present_address'=>$request->present_address,
-                  'permanent_address'=>$request->permanent_address,
-                   'dob'=>$request->dob,
-                   'password'=>$request->password,
-                   'image'=>"",
-                   'role'=>"2",
-                    'is_active'=>"1"
-                   
-                   
-          ]);  
+                 $teacher->save();
+
           $teacher_id=Teacher::where('first_name',$request->first_name)->pluck('id');
             User::insert([
             'username'=>$request->first_name,
@@ -238,7 +249,7 @@ public function teacher_update(TeacherRequest $request,$id)
     {
         
        $teacher= Teacher::find($id);
-        $teacher->first_name=$request->first_name;
+        $teacher->first_name=$request->input('first_name');
         $teacher->last_name=$request->last_name;
         $teacher->father_name=$request->father_name;
          $teacher->mother_name=$request->mother_name;
@@ -253,9 +264,14 @@ public function teacher_update(TeacherRequest $request,$id)
              $teacher->password=$request->password;
              $teacher->role="3";
               $teacher->is_active=$request->is_active;;
-              $newImageName=time().'-'.$request->name.'.'.$request->image->extension();
-              $image=$request->image->move(public_path('profile_img'),$newImageName);
-               $teacher->image=$newImageName;
+              if($request->hasFile('image') && $request->image->isValid()){
+                  if(file_exists(public_path('profile_img/'.$teacher->image))){
+                      unlink(public_path('profile_img/'.$teacher->image));
+                  } 
+                  $newImageName=time().'-'.$request->name.'.'.$request->image->extension();
+                  $image=$request->image->move(public_path('profile_img'),$newImageName);
+                  $teacher->image=$newImageName;
+              }
               $teacher->save();
 
               User::where('teacher_id', $id)
@@ -303,28 +319,32 @@ public function teacher_update(TeacherRequest $request,$id)
          public function add_student(StudentRequest $request)
     {
 
-        Student::insert([
-           
-            'student_name'=>$request->student_name,
-              'father_name'=>$request->father_name,
-               'mother_name'=>$request->mother_name,
-                'phone'=>$request->phone,
-                 'email'=>$request->email,
-                   'gender'=>$request->gender,
-                    'department'=>$request->department,
-                    'present_address'=>$request->present_address,
-                  'permanent_address'=>$request->permanent_address,
-                  'board'=>$request->board,
-                    'reg_no'=>$request->reg_no,
-                    'roll_number'=>$request->roll_number,
-                  'institute_name'=>$request->institute_name,
-                   'dob'=>$request->dob,
-                   'password'=>$request->password,
-                   'image'=>"",
-                   'role'=>"4",
-                    'is_active'=>"1"
-                   
-          ]);
+      $student =new Student;
+      $student->student_name=$request->student_name;
+        $student->father_name=$request->father_name;
+         $student->mother_name=$request->mother_name;
+          $student->phone=$request->phone;
+           $student->email=$request->email;
+             $student->gender=$request->gender;
+              $student->department=$request->department;
+              $student->present_address=$request->present_address;
+            $student->permanent_address=$request->permanent_address;
+            $student->board=$request->board;
+              $student->reg_no=$request->reg_no;
+              $student->roll_number=$request->roll_number;
+            $student->institute_name=$request->institute_name;
+             $student->dob=$request->dob;
+             $student->password=$request->password;
+             $student->image="";
+             $student->role="4";
+              $student->is_active="1";
+              $newImageName=time().'-'.$request->name.'.'.$request->image->extension();
+              $image=$request->image->move(public_path('profile_img'),$newImageName);
+              $student->image=$newImageName;
+            
+
+              
+                  $student->save();
           $student_id=Student::where('student_name',$request->student_name)->pluck('id');
           User::insert([
           'username'=>$request->student_name,
@@ -341,6 +361,7 @@ public function teacher_update(TeacherRequest $request,$id)
             public function studentprofile($id)
             {
                 $student = Student::find($id);
+                // dd( $student);
                 return view('admin.student_profile')->with('student',$student);
            }
                //student profile end
@@ -377,13 +398,18 @@ public function teacher_update(TeacherRequest $request,$id)
                   $student->institute_name=$request->institute_name;
                    $student->dob=$request->dob;
                    $student->password=$request->password;
-                   $student->image="";
                    $student->role="4";
                     $student->is_active=$request->is_active;
-                    $newImageName=time().'-'.$request->name.'.'.$request->image->extension();
-                    $image=$request->image->move(public_path('profile_img'),$newImageName);
-                     $student->image=$newImageName;
-                        $student->save();
+                  
+                    if($request->hasFile('image') && $request->image->isValid()){
+                      if(file_exists(public_path('profile_img/'.$student->image))){
+                          unlink(public_path('profile_img/'.$student->image));
+                      } 
+                      $newImageName=time().'-'.$request->name.'.'.$request->image->extension();
+                      $image=$request->image->move(public_path('profile_img'),$newImageName);
+                      $student->image=$newImageName;
+                  }
+                  $student->save();
 
 
                         User::where('student_id', $id)
